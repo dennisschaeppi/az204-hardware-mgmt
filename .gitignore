@@ -1,0 +1,6 @@
+
+.DS_Store
+obj/*
+wwwroot/lib/*
+bin/Debug/*
+appsettings.Development.json
