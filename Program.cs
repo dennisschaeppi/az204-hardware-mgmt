@@ -3,10 +3,10 @@ using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/*builder.Configuration.AddAzureKeyVault(
+builder.Configuration.AddAzureKeyVault(
     new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
     new DefaultAzureCredential()
-);*/
+);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -16,7 +16,7 @@ builder.Services.AddSingleton(s =>
     try
     {
         var cosmosClient = new CosmosClient(builder.Configuration["CosmosDb-ConnectionString"]);
-        return new CosmosDbService(cosmosClient, builder.Configuration["CosmosDb-DatabaseName"], builder.Configuration["CosmosDb-ContainerName"]);
+        return new CosmosDbService(cosmosClient, builder.Configuration["CosmosDb:DatabaseName"], builder.Configuration["CosmosDb:ContainerName"]);
     }
     catch (Exception ex)
     {
