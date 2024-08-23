@@ -1,7 +1,29 @@
+using Microsoft.Azure.Cosmos;
+using Azure.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
+
+/*builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
+    new DefaultAzureCredential()
+);*/
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton(s =>
+{
+    try
+    {
+        var cosmosClient = new CosmosClient(builder.Configuration["CosmosDb-ConnectionString"]);
+        return new CosmosDbService(cosmosClient, builder.Configuration["CosmosDb-DatabaseName"], builder.Configuration["CosmosDb-ContainerName"]);
+    }
+    catch (Exception ex)
+    {
+        //builder.Logging.LogError("Failed to configure CosmosDbService: {ExceptionMessage}", ex.Message);
+        throw;
+    }
+});
 
 var app = builder.Build();
 
