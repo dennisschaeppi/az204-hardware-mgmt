@@ -3,15 +3,15 @@ using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddAzureKeyVault(
+/*builder.Configuration.AddAzureKeyVault(
     new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
     new DefaultAzureCredential()
-);
+);*/
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton(s =>
+/*builder.Services.AddSingleton(s =>
 {
     try
     {
@@ -23,7 +23,7 @@ builder.Services.AddSingleton(s =>
         //builder.Logging.LogError("Failed to configure CosmosDbService: {ExceptionMessage}", ex.Message);
         throw;
     }
-});
+});*/
 
 var app = builder.Build();
 
