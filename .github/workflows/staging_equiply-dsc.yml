@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - equiply-dsc
 on:
   push:
     branches:
-      - main
+      - staging
   workflow_dispatch:
 
 jobs:
@@ -38,7 +38,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'equiply-dsc-staging'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -52,6 +52,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'equiply-dsc'
-          slot-name: 'Production'
+          slot-name: 'equiply-dsc-staging'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0CB863478DB14FBD87563408CA03EC47 }}
           package: .
