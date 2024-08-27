@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-/*builder.Services.AddSingleton(s =>
+builder.Services.AddSingleton(s =>
 {
     try
     {
@@ -23,7 +23,7 @@ builder.Services.AddRazorPages();
         //builder.Logging.LogError("Failed to configure CosmosDbService: {ExceptionMessage}", ex.Message);
         throw;
     }
-});*/
+});
 
 var app = builder.Build();
 
