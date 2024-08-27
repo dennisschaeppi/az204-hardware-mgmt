@@ -2,11 +2,12 @@ using Microsoft.Azure.Cosmos;
 using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+Console.WriteLine(builder.Configuration["KeyVaultName"]);
 
-/*builder.Configuration.AddAzureKeyVault(
+builder.Configuration.AddAzureKeyVault(
     new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
     new DefaultAzureCredential()
-);*/
+);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
