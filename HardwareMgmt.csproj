@@ -12,8 +12,4 @@
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.42.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="wwwroot\lib\**\*" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
 </Project>
