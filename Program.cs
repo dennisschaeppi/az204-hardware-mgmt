@@ -2,7 +2,6 @@ using Microsoft.Azure.Cosmos;
 using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-Console.WriteLine(builder.Configuration["KeyVaultName"]);
 
 builder.Configuration.AddAzureKeyVault(
     new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
